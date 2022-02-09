@@ -1,4 +1,8 @@
-// arrow function with single statement
-const f_arrow_single_stmt = (a,b) => console.log(a*b);
-// console.log(f_arrow_single_stmt(6,7)); // print undefined
-f_arrow_single_stmt(6,7);
+function f_constructor(fn, ln){
+    this.fn = fn;
+    this.ln = ln;
+}
+let myObj = new f_constructor("bhagwati" , "prasad");
+console.log(myObj.fn ," , " , myObj.ln);
+
+
