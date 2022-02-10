@@ -1,25 +1,15 @@
-// ------------------------------------------------------------------------
-// The call() Method with Arguments
-const person = {
-    full_name : function (fn , ln ){
-        this.fn = fn;
-        this.ln = ln;
+
+// this will refer to global
+
+// In JavaScript strict mode, if the first argument of the apply() method is not an object, it becomes the owner (object) of the invoked function. In "non-strict" mode, it becomes the global object.
+// "use strict";
+const null_in_apply = {
+    f1 : function (){
+        console.log( this);
     }
-};
-
-const person1 = {
-    fn : "person1",
-    ln : "person1 cast",
-};
-
-const person2 = {
-    fn : "person2",
-    ln : "person2 cast",
-};
-
-person.full_name.apply(person1 , ["fn1", "ln1"]);
-person.full_name.apply(person2 , ["fn2", "ln2"]);
-console.log(person1.fn + " : " + person1.ln);
-console.log(person2.fn + " : " + person2.ln);
-
-// ---------------------------------------------------------------------
+}
+let x = 8;
+null_in_apply.f1.apply(x);
+// 3 cases :
+    // 1: if null => in strict mode null, in unstrict mode  global object
+    // 2: if not null , then the corresponding wrapper object or object.
