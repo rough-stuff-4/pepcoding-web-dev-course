@@ -1,5 +1,11 @@
+// Method Reuse
+// The apply() method is similar to the call() method (previous chapter).
+// the difference is just that it accepts array of arguements unlike call
+
+
+
 // ------------------------------------------------------------------------
-// The call() Method with Arguments
+// The apply() Method with Arguments
 const person = {
     full_name : function (fn , ln ){
         this.fn = fn;
