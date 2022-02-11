@@ -34,11 +34,20 @@ function extractHTML (html){
         let teamName = teamNameElem.text();
         teamName = teamName.split("INNINGS")[0];
         teamName = teamName.trim();
+        let hwtName = "" , hwt = 0;
         if(wteamName == teamName) {
-            // console.log(teamName);
             let tableElm = $(innigsArr[i]).find(".table.bowler");
+            let allBowlers = $(tableElm).find("tr");
+            for(let j=0; j< allBowlers.length; j++){
+                let allColsOfPlayer = $(allBowlers[j]).find("td");
+                let playerName = $(allColsOfPlayer[0]).text();
+                let wickets = $(allColsOfPlayer[4]).text();
+                if(wickets > hwt){
+                    hwt = wickets;
+                    hwtName = playerName;
+                }
+            }
+            console.log(hwtName , " : " , hwt);
         }
-        // console.log(teamName);
     }
-    // console.log(htmlStr);
 }
