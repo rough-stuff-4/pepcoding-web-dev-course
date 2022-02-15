@@ -16,5 +16,5 @@ function extractHTML (html){
     let text = $(elemsArr[0]).text();
     let htmldata = $(elemsArr[0]).html();
     console.log("text data : " , text );
-    console.log("html data : " , htmldata );
+    // console.log("html data : " , htmldata );
 }
