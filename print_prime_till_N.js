@@ -1,6 +1,9 @@
 /**
  * time complexity = O( |h-l| * sqrt(n) ) == O(n^1.5)
  */
+const ps = require("prompt-sync");
+const prompt = ps();
+
 function solve1(l,h){
     for(let i = l  ;i<=h ; i++  ){
         if(i == 0 || i==1) continue;
@@ -21,4 +24,6 @@ function solve1(l,h){
     }
 }
 
-solve1(5,5);
+let low = prompt();
+let high = prompt();
+solve1(+low,+high);
