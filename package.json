@@ -1,5 +1,8 @@
 {
   "dependencies": {
-    "prompt-sync": "^4.2.0"
+    "cheerio": "^1.0.0-rc.10",
+    "request": "^2.88.2",
+    "start": "^5.1.0",
+    "xlsx": "^0.18.2"
   }
 }
