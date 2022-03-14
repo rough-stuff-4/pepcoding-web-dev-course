@@ -88,7 +88,6 @@
 
 // ------------------------------------------------
 
-
 // ------------------------------------------------
 // My Example : Solution of Problem with callback functions
 // Understand following behavior
@@ -117,3 +116,93 @@
 // above we have only two async functions which are dependant of each other, but if We would have 10 functions then we would be calling those functions inside callbacks recursively.
 // And that is called callback HTMLElement.
 // ------------------------------------------------
+
+// ------------------------------------------------
+// Basic Promise Example
+// const promiseObj = new Promise((resolve, reject) => {
+//   let req = false;
+//   if (req == true) {
+//     resolve("Request Success");
+//   } else {
+//     reject("Request Rejected");
+//   }
+// });
+
+// promiseObj.then(
+//   (value) => console.log(value),
+//   (error) => console.log(error)
+// ).finally(() => {
+//     console.log("Cleaned UP");
+// });
+
+// // OR
+
+// promiseObj
+//   .then((value) => console.log(value))
+//   .catch((error) => console.log(error)).finally(() => {
+//       console.log("Cleaned UP");
+//   })
+// ------------------------------------------------
+
+
+
+// ------------------------------------------------
+// Promise chaining
+// const promiseObj = new Promise((resolve , reject)=>{
+//     let num = 10;
+//     resolve(num)
+// }).then((value) => {
+//     console.log(value);
+//     return value + 10
+// }).then (
+//     (value)=>{
+//         console.log(value)
+//     }
+// )
+
+// ------------------------------------------------
+
+
+
+// ------------------------------------------------
+// Refactoring with callback hell using promise
+
+function getName(name) {
+    return new Promise ((resolve , reject) => {
+        setTimeout ( () => {
+            console.log("Inside  name SetTimeout");
+            if(false){
+                reject("rejected getName");
+            }
+            resolve(name);
+        } , 2000);
+    })
+}
+function getHobbies (name , callback) {
+    return new Promise ((resolve , reject) => {
+        setTimeout ( () => {
+            console.log("Inside  Hobbies SetTimeout");
+            if(true){
+                reject("rejected getHobbies");
+            }
+            resolve(['Cricket'  , 'Reading' , 'Dancing']);
+        } , 2000);
+    })
+}
+
+async function showHobby() {
+    try {
+        const nm = await getName('Sonam');
+        const hobby = await getHobbies(nm);
+        console.log(hobby);
+    } catch (error) {
+        console.log(error +  " : Async await.");
+    }
+}
+showHobby()
+
+// OR
+
+getName('Sonam')
+.then (nm => getHobbies(nm))
+.then(hobby => console.log(hobby)).catch ((err) => console.log(err + ".catch()"));
