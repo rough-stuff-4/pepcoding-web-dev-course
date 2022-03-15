@@ -95,6 +95,6 @@ test().then((val) => {
 }).catch((err) => {
     console.log(err)
 }).finally(()=>{
-    // here you can stop your loader
+    // here you can stop your loader aka clean up functionality
     console.log("Experiment Complete")
 })
