@@ -1,0 +1,20 @@
+componentDidMount() {
+    fetch(
+      "http://localhost:3004/restaurant/" + this.props.match.params.id , {
+          method: "PUT",
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(this.state)
+      }
+    ).then((result) => {
+      console.log("response  : ", result);
+
+      result.json().then((resp) => {
+        // this.setState({list:result});
+        console.log("result : ", resp);
+        alert("Restaurant has been updated")
+        this.setState({...resp});
+      });
+    });
+  }

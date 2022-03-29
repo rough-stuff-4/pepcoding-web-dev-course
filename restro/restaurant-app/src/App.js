@@ -1,9 +1,15 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faSearch , faPlus , faList , faHome , faUser} from "@fortawesome/free-solid-svg-icons";
+
 import { Navbar, Nav, Container, Item, NavDropdown } from "react-bootstrap";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+import  NavBarManu from './components/NavBarManu'
+
 
 import Home from "./components/Home";
 import RestaurantUpdate from "./components/RestaurantUpdate";
@@ -11,39 +17,14 @@ import RestaurantCreate from "./components/RestaurantCreate";
 import RestaurantDetail from "./components/RestaurantDetail";
 import RestaurantSearch from "./components/RestaurantSearch";
 import RestauranstList from "./components/RestauranstList";
+import Login from "./components/Login";
+import Logout from "./components/Logout";
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <Navbar bg="light" expand="lg">
-          <Container>
-            <Navbar.Brand href="#home">Restro</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="me-auto">
-                <Nav.Link href="#home">
-                  <Link to={"/"}>Home</Link>
-                </Nav.Link>
-                <Nav.Link href="#link">
-                  <Link to={"/list"}>List</Link>
-                </Nav.Link>
-                <Nav.Link href="#link">
-                  <Link to={"/create"}>Create</Link>
-                </Nav.Link>
-                <Nav.Link href="#link">
-                  <Link to={"/search"}>Search</Link>
-                </Nav.Link>
-                <Nav.Link href="#link">
-                  <Link to={"/details"}>Details</Link>
-                </Nav.Link>
-                <Nav.Link href="#link">
-                  <Link to={"/update"}>update</Link>
-                </Nav.Link>
-              </Nav>
-            </Navbar.Collapse>
-          </Container>
-        </Navbar>
+        <NavBarManu/>
         <Route exact path={"/list"}>
           <RestauranstList />
         </Route>
@@ -53,8 +34,18 @@ function App() {
         <Route exact path={"/search"}>
           <RestaurantSearch />
         </Route>
-        <Route exact path={"/update"}>
-          <RestaurantUpdate />
+        <Route exact path={"/logout"}>
+          <Logout />
+        </Route>
+        <Route exact path={"/update/:id"} render={props=>(
+          <RestaurantUpdate {...props}/>
+        )}
+          >
+        </Route>
+        <Route exact path={"/login"} render={props=>(
+          <Login {...props}/>
+        )}
+          >
         </Route>
         <Route exact path={"/details"}>
           <RestaurantDetail />
